@@ -7,6 +7,7 @@
 
 #ifndef ARTICULO_H_
 #define ARTICULO_H_
+#include "LinkedList.h"
 
 struct{
 	int id;

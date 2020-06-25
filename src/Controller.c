@@ -4,6 +4,7 @@
 #include "Articulo.h"
 #include "parser.h"
 #include "Descuentos.h"
+#include "Informes.h"
 
 //#include "utn_funciones.h"
 
@@ -116,13 +117,31 @@ int controller_saveAsText(char* path , LinkedList* pListaArticulos)
     return retorno;
 }
 
+int controller_informes(LinkedList* pListaArticulos)
+{
+	int retorno = -1;
+	int articulosMayorA100;
+	int articulosRubro;
+	if(pListaArticulos != NULL)
+	{
+		articulosMayorA100 = ll_count(pListaArticulos,informes_articulosPrecioMayorA100);
+		articulosRubro = ll_count(pListaArticulos,informes_articulosRubro1);
+		retorno = 0;
+		printf("\nCantidad de Articulos cuyo precio sea mayor a 100 : %d\n"
+				"Cantidad de Artículos del Rubro 1 – CUIDADO DE ROPA : %d\n",articulosMayorA100,articulosRubro);
+	}
+
+	return retorno;
+}
+
 void menu()
 {
 	printf("\n**************ARTICULOS*******************\n\n");
-	prinf("1. Importar de archivo\n"
+	printf("1. Importar de archivo\n"
 			"2. Imprimir articulos\n"
 			"3. Ordenar articulos de forma ascendete\n"
-			"3. Aplicar descuentos\n"
-			"4. Exportar archivo a MAPEADO.CSV\n"
-			"5. Salir\n");
+			"4. Aplicar descuentos\n"
+			"5. Exportar archivo a MAPEADO.CSV\n"
+			"6. Informes\n"
+			"7. Salir\n");
 }

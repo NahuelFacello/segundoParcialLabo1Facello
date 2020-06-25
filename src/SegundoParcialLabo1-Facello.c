@@ -14,6 +14,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Articulo.h"
+#include "utn_funciones.h"
 
 int main(void)
 {
@@ -22,8 +23,8 @@ int main(void)
 	int opcionMenu;
 	setbuf(stdout,NULL);
 	do{
-		void menu();
-		utn_getNumeroInt(&opcionMenu,"Opcion : ", "\nError, intene nuevamente\n",1,5,3);
+		menu();
+		utn_getNumeroInt(&opcionMenu,"Opcion : ", "\nError, intene nuevamente\n",1,7,3);
 		switch(opcionMenu)
 		{
 		case 1:
@@ -57,21 +58,34 @@ int main(void)
 				if(!controller_descuentos(pListaArticulos))
 				printf("\nDescuentos aplicados\n");
 				else
-				prinf("\nNo se pudo aplicar el descuento\n");
+				printf("\nNo se pudo aplicar el descuento\n");
 			}
 			else
 				printf("\nSin articulos\n");
 			break;
-
+		case 5:
+			if(flag != 0)
+			{
+				if(!controller_saveAsText("mapeado.csv", pListaArticulos))
+				printf("\nArchivo guardado!\n");
+				else
+				printf("\nNo se pudo guardar el archivo\n");
+			}
+			else
+				printf("\nNada que guardar\n");
+			break;
+		case 6:
+			if(flag != 0)
+			{
+				if(controller_informes(pListaArticulos))
+					printf("\nNo se pudo generar el informe\n");
+			}
+			else
+				printf("\nNada que informar\n");
+			break;
 		}
-
-		//printf("%d", retorno);
-
-
-		controller_imprimirArticulos(pListaArticulos);
-
-		controller_imprimirArticulos(pListaArticulos);
-		controller_saveAsText("mapeado.csv", pListaArticulos);
-	}while(opcionMenu != 5);
+		system("pause");
+		system("cls");
+	}while(opcionMenu != 7);
 	return EXIT_SUCCESS;
 }

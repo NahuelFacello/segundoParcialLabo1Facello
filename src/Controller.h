@@ -9,3 +9,5 @@ int controller_descuentos(LinkedList* pListaArticulos);
 
 int controller_saveAsText(char* path , LinkedList* pListaArticulos);
 
+int controller_informes(LinkedList* pListaArticulos);
+

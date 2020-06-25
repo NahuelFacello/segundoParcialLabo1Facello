@@ -26,7 +26,7 @@ int descuento_cuidadoDeRopa(void* this)
 		{
 			descuento = (float)auxPrecio*20/100;
 			auxPrecioConDescuento = (float)auxPrecio-descuento;
-			if(!articulo_setPrecio((Articulo*)this,auxPrecioConDescuento))
+			if(!articulo_setPrecio((Articulo*)this,(float)auxPrecioConDescuento))
 				retorno = 0;
 		}
 
@@ -48,7 +48,7 @@ int descuento_elementosDeLimpieza(void* this)
 		{
 			descuento = (float)auxPrecio*10/100;
 			auxPrecioConDescuento = (float)auxPrecio-descuento;
-			if(!articulo_setPrecio((Articulo*)this,auxPrecioConDescuento))
+			if(!articulo_setPrecio((Articulo*)this,(float)auxPrecioConDescuento))
 				retorno = 0;
 		}
 
